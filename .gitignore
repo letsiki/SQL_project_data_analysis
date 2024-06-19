@@ -1,0 +1,14 @@
+/.vscode
+/case.sql
+/CREATE TABLE job_applied.sql
+/create_query.py
+/csv_files
+/cte.sql
+/dates_pg.sql
+/INSERT INTO job_applied.sql
+/job_applied_inserts.sql
+/practice_problem_6.sql
+/practice_problem_7.sql
+/practice_problem_8.sql
+/sql_course.session.sql
+/union.sql
