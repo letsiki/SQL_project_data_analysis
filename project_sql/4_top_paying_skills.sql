@@ -30,111 +30,138 @@ ORDER BY
 
 
 /*
-Here's a breakdown of the results for top paying skills for Data Analysts:
-- High Demand for Big Data & ML Skills: Top salaries are commanded by analysts skilled in big data technologies (PySpark, Couchbase), machine learning tools (DataRobot, Jupyter), and Python libraries (Pandas, NumPy), reflecting the industry's high valuation of data processing and predictive modeling capabilities.
-- Software Development & Deployment Proficiency: Knowledge in development and deployment tools (GitLab, Kubernetes, Airflow) indicates a lucrative crossover between data analysis and engineering, with a premium on skills that facilitate automation and efficient data pipeline management.
-- Cloud Computing Expertise: Familiarity with cloud and data engineering tools (Elasticsearch, Databricks, GCP) underscores the growing importance of cloud-based analytics environments, suggesting that cloud proficiency significantly boosts earning potential in data analytics.
-
 [
   {
-    "skills": "pyspark",
-    "avg_salary": "208172"
+    "skill": "spark",
+    "average_salary": "113002"
   },
   {
-    "skills": "bitbucket",
-    "avg_salary": "189155"
+    "skill": "databricks",
+    "average_salary": "112881"
   },
   {
-    "skills": "couchbase",
-    "avg_salary": "160515"
+    "skill": "snowflake",
+    "average_salary": "111578"
   },
   {
-    "skills": "watson",
-    "avg_salary": "160515"
+    "skill": "hadoop",
+    "average_salary": "110888"
   },
   {
-    "skills": "datarobot",
-    "avg_salary": "155486"
+    "skill": "nosql",
+    "average_salary": "108331"
   },
   {
-    "skills": "gitlab",
-    "avg_salary": "154500"
+    "skill": "jira",
+    "average_salary": "107931"
   },
   {
-    "skills": "swift",
-    "avg_salary": "153750"
+    "skill": "aws",
+    "average_salary": "106440"
   },
   {
-    "skills": "jupyter",
-    "avg_salary": "152777"
+    "skill": "alteryx",
+    "average_salary": "105580"
   },
   {
-    "skills": "pandas",
-    "avg_salary": "151821"
+    "skill": "azure",
+    "average_salary": "105400"
   },
   {
-    "skills": "elasticsearch",
-    "avg_salary": "145000"
+    "skill": "looker",
+    "average_salary": "103855"
   },
   {
-    "skills": "golang",
-    "avg_salary": "145000"
+    "skill": "python",
+    "average_salary": "101512"
   },
   {
-    "skills": "numpy",
-    "avg_salary": "143513"
+    "skill": "oracle",
+    "average_salary": "100964"
   },
   {
-    "skills": "databricks",
-    "avg_salary": "141907"
+    "skill": "java",
+    "average_salary": "100214"
   },
   {
-    "skills": "linux",
-    "avg_salary": "136508"
+    "skill": "r",
+    "average_salary": "98708"
   },
   {
-    "skills": "kubernetes",
-    "avg_salary": "132500"
+    "skill": "flow",
+    "average_salary": "98020"
   },
   {
-    "skills": "atlassian",
-    "avg_salary": "131162"
+    "skill": "tableau",
+    "average_salary": "97978"
   },
   {
-    "skills": "twilio",
-    "avg_salary": "127000"
+    "skill": "go",
+    "average_salary": "97267"
   },
   {
-    "skills": "airflow",
-    "avg_salary": "126103"
+    "skill": "ssis",
+    "average_salary": "97235"
   },
   {
-    "skills": "scikit-learn",
-    "avg_salary": "125781"
+    "skill": "sql",
+    "average_salary": "96435"
   },
   {
-    "skills": "jenkins",
-    "avg_salary": "125436"
+    "skill": "sql server",
+    "average_salary": "96191"
   },
   {
-    "skills": "notion",
-    "avg_salary": "125000"
+    "skill": "vba",
+    "average_salary": "93845"
   },
   {
-    "skills": "scala",
-    "avg_salary": "124903"
+    "skill": "sas",
+    "average_salary": "93707"
   },
   {
-    "skills": "postgresql",
-    "avg_salary": "123879"
+    "skill": "sap",
+    "average_salary": "92446"
   },
   {
-    "skills": "gcp",
-    "avg_salary": "122500"
+    "skill": "power bi",
+    "average_salary": "92324"
   },
   {
-    "skills": "microstrategy",
-    "avg_salary": "121619"
+    "skill": "javascript",
+    "average_salary": "91805"
+  },
+  {
+    "skill": "ssrs",
+    "average_salary": "91537"
+  },
+  {
+    "skill": "sharepoint",
+    "average_salary": "89027"
+  },
+  {
+    "skill": "powerpoint",
+    "average_salary": "88316"
+  },
+  {
+    "skill": "excel",
+    "average_salary": "86419"
+  },
+  {
+    "skill": "spss",
+    "average_salary": "85293"
+  },
+  {
+    "skill": "sheets",
+    "average_salary": "84130"
+  },
+  {
+    "skill": "word",
+    "average_salary": "82941"
+  },
+  {
+    "skill": "outlook",
+    "average_salary": "80680"
   }
 ]
 */

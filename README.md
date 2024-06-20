@@ -60,32 +60,24 @@ LIMIT 10
 
 To comprehend the skills necessary for high-paying data analyst positions, I integrated job postings with skills data, offering insights into the competencies valued by employers for roles with significant compensation.
 ```sql
-WITH top_paying_jobs AS (
-    SELECT	
-        job_id,
-        job_title,
-        salary_year_avg,
-        name AS company_name
-    FROM
-        job_postings_fact
-    LEFT JOIN company_dim ON job_postings_fact.company_id = company_dim.company_id
-    WHERE
-        job_title_short = 'Data Analyst' AND 
-        job_location = 'Anywhere' AND 
-        salary_year_avg IS NOT NULL
-    ORDER BY
-        salary_year_avg DESC
-    LIMIT 10
+WITH top_ten_paying AS (
+  SELECT *
+  FROM
+      job_postings_fact AS jpf
+  LEFT JOIN
+    company_dim AS cd ON cd.company_id = jpf.company_id
+  WHERE
+    jpf.salary_year_avg IS NOT NULL
+    AND jpf.job_title_short = 'Data Analyst'
+    AND jpf.job_work_from_home = TRUE
+  ORDER BY
+    jpf.salary_year_avg DESC
+  LIMIT 10
 )
-
-SELECT 
-    top_paying_jobs.*,
-    skills
-FROM top_paying_jobs
-INNER JOIN skills_job_dim ON top_paying_jobs.job_id = skills_job_dim.job_id
-INNER JOIN skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
-ORDER BY
-    salary_year_avg DESC;
+SELECT DISTINCT sd.skills
+FROM skills_job_dim AS sjd
+INNER JOIN top_ten_paying AS ttp ON ttp.job_id = sjd.job_id
+INNER JOIN skills_dim AS sd ON sd.skill_id = sjd.skill_id
 ```
 ### Breakdown of Most Demanded Skills for the Top 10 Highest Paying Data Analyst Jobs in 2023:
 
@@ -101,20 +93,24 @@ Other skills such as **R**, **Snowflake**, **Pandas**, and **Excel** demonstrate
 
 This query facilitated the identification of skills most frequently requested in job postings, focusing attention on areas with high demand.
 ```sql
+WITH top_skills AS (
 SELECT 
-    skills,
-    COUNT(skills_job_dim.job_id) AS demand_count
-FROM job_postings_fact
-INNER JOIN skills_job_dim ON job_postings_fact.job_id = skills_job_dim.job_id
-INNER JOIN skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
-WHERE
-    job_title_short = 'Data Analyst' 
-    AND job_work_from_home = True 
-GROUP BY
-    skills
+  sd.skills,
+  jpf.job_id
+FROM skills_job_dim AS sjd
+INNER JOIN job_postings_fact AS jpf ON jpf.job_id = sjd.job_id
+INNER JOIN skills_dim AS sd ON sd.skill_id = sjd.skill_id
+WHERE jpf.job_title_short = 'Data Analyst'
+)
+SELECT
+  top_skills.skills AS skill,
+  COUNT(top_skills.job_id) AS times_requested
+FROM top_skills
+GROUP BY 
+  skill
 ORDER BY
-    demand_count DESC
-LIMIT 5;
+  times_requested DESC
+LIMIT 5
 ```
 ### Breakdown of Most Demanded Skills for Data Analysts in 2023:
 
@@ -135,21 +131,27 @@ LIMIT 5;
 
 Exploring the average salaries associated with different skills unveiled the highest-paying skills.
 ```sql
+WITH skill_job_salary AS (
 SELECT 
-    skills,
-    ROUND(AVG(salary_year_avg), 0) AS avg_salary
-FROM job_postings_fact
-INNER JOIN skills_job_dim ON job_postings_fact.job_id = skills_job_dim.job_id
-INNER JOIN skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
-WHERE
-    job_title_short = 'Data Analyst'
-    AND salary_year_avg IS NOT NULL
-    AND job_work_from_home = True 
-GROUP BY
-    skills
+  sd.skills,
+  jpf.job_id,
+  jpf.salary_year_avg
+FROM skills_job_dim AS sjd
+INNER JOIN job_postings_fact AS jpf ON jpf.job_id = sjd.job_id
+INNER JOIN skills_dim AS sd ON sd.skill_id = sjd.skill_id
+WHERE jpf.job_title_short = 'Data Analyst'
+)
+SELECT
+  skill_job_salary.skills AS skill,
+  ROUND(AVG(skill_job_salary.salary_year_avg), 0) AS average_salary
+FROM skill_job_salary
+WHERE skill_job_salary.salary_year_avg IS NOT NULL
+GROUP BY 
+  skill
+HAVING
+  COUNT(1) > 100
 ORDER BY
-    avg_salary DESC
-LIMIT 25;
+  average_salary DESC
 ```
 ### Breakdown of Top Paying Skills for Data Analysts:
 

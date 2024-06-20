@@ -35,24 +35,24 @@ Programming and Visualization Tools like Python, Tableau, and Power BI are essen
 
 [
   {
-    "skills": "sql",
-    "demand_count": "7291"
+    "skill": "sql",
+    "times_requested": "92628"
   },
   {
-    "skills": "excel",
-    "demand_count": "4611"
+    "skill": "excel",
+    "times_requested": "67031"
   },
   {
-    "skills": "python",
-    "demand_count": "4330"
+    "skill": "python",
+    "times_requested": "57326"
   },
   {
-    "skills": "tableau",
-    "demand_count": "3745"
+    "skill": "tableau",
+    "times_requested": "46554"
   },
   {
-    "skills": "power bi",
-    "demand_count": "2609"
+    "skill": "power bi",
+    "times_requested": "39468"
   }
 ]
 */
