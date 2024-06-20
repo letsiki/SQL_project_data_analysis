@@ -31,24 +31,21 @@ Each query in this project aimed to explore specific facets of the data analyst 
 To identify the highest-paying roles, data analyst positions were filtered based on average yearly salary and location, with a focus on remote opportunities. This query highlights lucrative prospects within the field.
 
 ```sql
-SELECT	
-	job_id,
-	job_title,
-	job_location,
-	job_schedule_type,
-	salary_year_avg,
-	job_posted_date,
-    name AS company_name
+SELECT
+  jpf.job_title AS job_role,
+  cd.name AS company_name,
+  jpf.salary_year_avg AS yearly_salary
 FROM
-    job_postings_fact
-LEFT JOIN company_dim ON job_postings_fact.company_id = company_dim.company_id
+    job_postings_fact AS jpf
+LEFT JOIN
+  company_dim AS cd ON cd.company_id = jpf.company_id
 WHERE
-    job_title_short = 'Data Analyst' AND 
-    job_location = 'Anywhere' AND 
-    salary_year_avg IS NOT NULL
+  jpf.salary_year_avg IS NOT NULL
+  AND jpf.job_title_short = 'Data Analyst'
+  AND jpf.job_work_from_home = TRUE
 ORDER BY
-    salary_year_avg DESC
-LIMIT 10;
+  jpf.salary_year_avg DESC
+LIMIT 10
 ```
 ### Breakdown of Top Data Analyst Jobs in 2023:
 
